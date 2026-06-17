@@ -1,0 +1,96 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+
+
+    .container {
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #ff4c4c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      position: absolute;
+      top: 73px;
+      left: 0;
+    }
+    .glitch {
+      font-size: 3.5em;
+      position: relative;
+      color: #fff;
+      animation: flicker 2s infinite;
+      text-align: center;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: "Error it's over 404";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .glitch::before {
+      left: 2px;
+      color: #ff00c8;
+      animation: glitch-left 2s infinite;
+    }
+    .glitch::after {
+      left: -2px;
+      color: #00fff9;
+      animation: glitch-right 2s infinite;
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0;
+      }
+    }
+    @keyframes glitch-left {
+      0% {
+        clip: rect(0, 0, 0, 0);
+      }
+      10% {
+        clip: rect(5px, 9999px, 35px, 0);
+      }
+      20% {
+        clip: rect(10px, 9999px, 20px, 0);
+      }
+    }
+    @keyframes glitch-right {
+      0% {
+        clip: rect(0, 0, 0, 0);
+      }
+      10% {
+        clip: rect(15px, 9999px, 25px, 0);
+      }
+      20% {
+        clip: rect(0px, 9999px, 10px, 0);
+      }
+    }
+    @media (max-width: 768px) {
+      .glitch {
+        font-size: 2.5em;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .glitch {
+        font-size: 1.8em;
+      }
+    }

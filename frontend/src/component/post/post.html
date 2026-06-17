@@ -1,0 +1,53 @@
+<div class="post-container">
+  <h2 class="post-title">{{ post?.title }}</h2>
+
+  <img
+    class="post-cover-image" 
+    *ngIf="post?.coverImage"
+    [src]="getImageUrl(post?.coverImage)"
+    alt="Immagine di copertura del post"
+  />
+
+  <p class="post-content">{{ post?.content }}</p>
+
+  <div class="post-meta">
+    <span class="post-date">
+      🗓
+      <time *ngIf="post?.created_at" [attr.datetime]="post?.created_at">
+        {{ post?.created_at | date: 'dd-MM-yyyy' }}
+      </time>
+    </span>
+    <span class="post-author">
+      ✍️ {{ post?.author || 'Autore sconosciuto' }}
+    </span>
+  </div>
+</div>
+
+<div class="comments-container">
+  <h2 class="section-title">Lascia un commento</h2>
+  <a
+    class="comment-toggle-link"
+    routerLink="commenti"
+    (click)="toggleComments()"
+  >
+    💬 Commenta
+  </a>
+  <div class="comments-content" *ngIf="shouldShowComments">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div
+  class="strumenti-container"
+  *ngIf="isAdmin || (isLoggedIn && post!.author === getUsername())"
+>
+  <div>
+    <h2>Strumenti</h2>
+    <a class="strumenti-link" routerLink="strumenti" (click)="toggleEdit()"
+      >⚙️</a
+    >
+    <div class="strumenti-content" *ngIf="shouldShowEdit">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

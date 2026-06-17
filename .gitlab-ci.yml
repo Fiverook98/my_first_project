@@ -1,0 +1,75 @@
+stages:
+  - install
+  - lint
+  - build
+  # - docker-build
+
+default:
+  image: node:latest
+
+cache:
+  key: ${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-v2
+  paths:
+    - node_modules/
+
+variables:
+  FRONT_IMAGE: $CI_REGISTRY_IMAGE/frontend-miniblog
+  BACK_IMAGE: $CI_REGISTRY_IMAGE/backend-miniblog
+
+before_script:
+  - echo "Avvio pipeline per $CI_COMMIT_REF_NAME"
+
+install:
+  stage: install
+  script:
+    - npm install
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - when: always
+
+lint:
+  stage: lint
+  script:
+    - npm run lint 
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+
+
+build_frontend:
+  stage: build
+  script:
+    - npm run build -w frontend
+  artifacts:
+    paths:
+      - frontend/dist/
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - when: always
+
+build_backend:
+  stage: build
+  script:
+    - echo "Nessuna build necessaria, backend pronto"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+    - when: always
+
+# docker_build:
+#   stage: docker-build
+#   image: quay.io/buildah/stable:v1.34.0
+#   variables:
+#     STORAGE_DRIVER: vfs
+#   script:
+#     - echo "Login al container registry GitLab"
+#     # - buildah login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+#     - echo "Build e push frontend"
+#     - buildah bud -t $FRONT_IMAGE:$CI_COMMIT_SHORT_SHA frontend/
+#     # - buildah push $FRONT_IMAGE:$CI_COMMIT_SHORT_SHA
+
+#     - echo "Build e push backend"
+#     - buildah bud -t $BACK_IMAGE:$CI_COMMIT_SHORT_SHA backend/
+#     # - buildah push $BACK_IMAGE:$CI_COMMIT_SHORT_SHA
+#   rules:
+#     - if: '$CI_COMMIT_BRANCH == "dev" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "push"'
+#     - when: always

@@ -1,0 +1,283 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+:root {
+  --page-bg: #f0f2f5;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --muted-text-color: #555;
+  --quiet-text-color: #777;
+
+  --headline-color: #333;
+  --subheadline-color: #2c3e50;
+
+  --accent-color: #007acc;
+  --accent-hover: #005fa3;
+  --accent-bg: #e6f2ff;
+  --accent-bg-hover: #cce4ff;
+
+  --border-color: #ddd;
+  --input-bg: #ffffff;
+  --section-bg: #ffffff;
+  --section-bg-alt: #f9f9f9;
+  --card-hover-bg: #f9f9f9;
+
+  --button-bg: #f0f0f0;
+  --button-accent-bg: #d0f0ff;
+
+  --success-color: #2ecc71;
+  --success-hover: #27ae60;
+  --error-color: #e74c3c;
+  --error-hover: #c0392b;
+  --error-bg: #ffebeb;
+  --error-text: #c0392b;
+
+  --danger-bg-hover: #ffdddd;
+  --danger-text-hover: #c00;
+
+  --like-color: #c33;
+  --like-active-bg: #ffd6d6;
+  --like-active-color: #a00;
+  --like-hover-bg: #fbecec;
+
+  /* Colori moderni per i bottoni */
+  --hover-bg: rgba(0, 0, 0, 0.02);
+  --success-color-light: #10b981;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+
+  /* Design System Moderno */
+  --border-radius-sm: 12px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 20px;
+  --border-radius-pill: 25px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  
+  --gradient-primary: linear-gradient(135deg, var(--accent-color), #4f46e5);
+  --gradient-success: linear-gradient(135deg, var(--success-color), #059669);
+  --gradient-error: linear-gradient(135deg, var(--error-color), #dc2626);
+  --gradient-rainbow: linear-gradient(90deg, var(--accent-color), #4f46e5, #10b981, #f59e0b);
+
+  --navbar-bg: #004080;
+  --navbar-text: #ffffff;
+  --navbar-accent-hover: #ffcc00;
+
+  --footer-bg: #f4f4f4;
+  --footer-text: #555;
+
+  --login-bg: #eef6fb;
+  --login-border: #cce0ec;
+}
+
+[data-theme='dark'] {
+  /* Sfondi principali - Dark Modern */
+  --page-bg: linear-gradient(135deg, #0a0e1a 0%, #1e1b4b 100%);
+  --bg-color: #0a0e1a;
+  --text-color: #f8fafc;
+  --muted-text-color: #94a3b8;
+  --quiet-text-color: #64748b;
+
+  /* Titoli e sottotitoli */
+  --headline-color: #f1f5f9;
+  --subheadline-color: #a78bfa;
+
+  /* Colori accent moderni - Indigo/Purple */
+  --accent-color: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-bg: rgba(99, 102, 241, 0.1);
+  --accent-bg-hover: rgba(99, 102, 241, 0.2);
+
+  /* Bordi e superfici */
+  --border-color: #334155;
+  --input-bg: #1e293b;
+  --section-bg: rgba(22, 27, 46, 0.8);
+  --section-bg-alt: rgba(30, 41, 59, 0.8);
+  --card-hover-bg: rgba(51, 65, 85, 0.3);
+
+  /* Bottoni */
+  --button-bg: #374151;
+  --button-accent-bg: rgba(99, 102, 241, 0.2);
+
+  /* Stati di successo/errore moderni */
+  --success-color: #10b981;
+  --success-hover: #059669;
+  --error-color: #ef4444;
+  --error-hover: #dc2626;
+  --error-bg: rgba(239, 68, 68, 0.1);
+  --error-text: #fca5a5;
+
+  /* Danger states */
+  --danger-bg-hover: rgba(239, 68, 68, 0.2);
+  --danger-text-hover: #fca5a5;
+
+  /* Like system con colore moderno */
+  --like-color: #f472b6;
+  --like-active-bg: rgba(244, 114, 182, 0.2);
+  --like-active-color: #f472b6;
+  --like-hover-bg: rgba(244, 114, 182, 0.1);
+
+  /* Navbar moderna */
+  --navbar-bg: rgba(15, 23, 42, 0.95);
+  --navbar-text: #f1f5f9;
+  --navbar-accent-hover: #fbbf24;
+
+  /* Footer moderno */
+  --footer-bg: rgba(15, 23, 42, 0.8);
+  --footer-text: #94a3b8;
+
+  /* Login moderno */
+  --login-bg: rgba(30, 41, 59, 0.8);
+  --login-border: #475569;
+
+  /* Ombre moderne per tema dark */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  
+  /* Gradients per tema dark */
+  --gradient-primary: linear-gradient(135deg, var(--accent-color), #4f46e5);
+  --gradient-success: linear-gradient(135deg, var(--success-color), #059669);
+  --gradient-error: linear-gradient(135deg, var(--error-color), #dc2626);
+  --gradient-rainbow: linear-gradient(90deg, var(--accent-color), #4f46e5, #10b981, #f59e0b);
+}
+
+/* Effetti aggiuntivi per il tema Dark Modern */
+[data-theme='dark'] body {
+  background: var(--page-bg);
+  backdrop-filter: blur(10px);
+}
+
+/* Cards con effetto glass subtle per il tema dark */
+[data-theme='dark'] .post-container,
+[data-theme='dark'] .form-post-container,
+[data-theme='dark'] .comments-container,
+[data-theme='dark'] .strumenti-container {
+  background: var(--section-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Effetti hover moderni */
+[data-theme='dark'] .comment-card:hover,
+[data-theme='dark'] .reply-card:hover {
+  background: var(--card-hover-bg);
+  transition: all 0.3s ease;
+}
+
+/* Bottoni con effetti moderni */
+[data-theme='dark'] button:not(.theme-toggle) {
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+[data-theme='dark'] button:hover:not(.theme-toggle) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Input moderni per tema dark */
+[data-theme='dark'] input,
+[data-theme='dark'] textarea {
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+[data-theme='dark'] input:focus,
+[data-theme='dark'] textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+main {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+app-header,
+app-footer {
+  display: block;
+  width: 100%;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Classi utility globali per ridurre duplicazione CSS */
+.modern-container {
+  background: var(--section-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-rainbow);
+}
+
+.modern-button {
+  border: none;
+  border-radius: var(--border-radius-pill);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modern-button:hover {
+  transform: translateY(-2px);
+}
+
+.modern-input {
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: var(--input-bg);
+  color: var(--text-color);
+  font-family: inherit;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.modern-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.modern-input::placeholder {
+  color: var(--muted-text-color);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1.2rem;
+  }
+}

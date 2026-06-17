@@ -1,0 +1,43 @@
+<div class="form-post-container">
+  <h2>Nuovo Post</h2>
+
+  <form (ngSubmit)="submitPost()">
+    <label>
+      Titolo
+      <input type="text" [(ngModel)]="title" name="title" required />
+    </label>
+
+    <label>
+      Contenuto
+      <textarea [(ngModel)]="content" name="content" required></textarea>
+    </label>
+
+    <div class="tags-field">
+      <label for="tags">🏷️ Tags</label>
+      <input 
+        id="tags"
+        type="text" 
+        [(ngModel)]="tags" 
+        name="tags" 
+        placeholder="Inserisci tag separati da virgole (es: angular, typescript, web)" 
+        class="tags-input"
+      />
+      <small class="tags-help">Separa i tag con le virgole per una migliore categorizzazione</small>
+    </div>
+
+    <label>
+      Immagine di copertura
+      <input type="file" (change)="onFileSelected($event)" />
+    </label>
+    <img
+      *ngIf="getPreviewImageUrl()"
+      [src]="getPreviewImageUrl()"
+      alt="Anteprima copertina del post"
+      class="post-cover"
+    />
+    <button type="submit">Pubblica</button>
+
+    <p class="success" *ngIf="success">{{ success }}</p>
+    <p class="error" *ngIf="error">{{ error }}</p>
+  </form>
+</div>

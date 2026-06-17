@@ -1,0 +1,29 @@
+<form class="comment-form" (ngSubmit)="onSubmit()" #commentForm="ngForm">
+  <div class="form-group">
+    <textarea
+      name="content"
+      [(ngModel)]="content"
+      required
+      placeholder="Scrivi un commento..."
+      class="comment-textarea"
+    ></textarea>
+  </div>
+  <div class="comment-meta">
+    <small class="comment-date"> {{ date | date: 'd-MM-yyyy' }} </small>
+  </div>
+  <div class="comment-buttons">
+    <button
+      type="submit"
+      class="submit-button"
+      [disabled]="!commentForm.form.valid"
+    >
+      Pubblica
+    </button>
+  </div>
+  <div class="message success" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+  <div class="message error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</form>

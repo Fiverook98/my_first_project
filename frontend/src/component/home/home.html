@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="site-description">
+    <h1>Il Mini-Blog in Angular</h1>
+    <p>
+      Salve e benvenuti su questo piccolo blog come presentazione di progetto
+      personalizzato. <br />
+      In questo blog si potrà accedere per poter guardare
+      i post pubblicati. <br />
+      Con un accesso sarà possibile inserire nuovi post tramite un form
+      che salva i dati nel database. <br/>
+      Si potrà anche rispondere ai post inseriti dagli altri utenti.
+      <br />
+      <br />
+      <strong>Nota:</strong> Per poter accedere al blog è necessario effettuare
+      l'accesso con le credenziali fornite. <br />
+      Se non si dispone di un account, è possibile registrarsi tramite il form di
+      registrazione.
+      <br />
+      <br />
+      Questo progetto è stato realizzato con Angular e utilizza un database
+      postgreSQL per la gestione dei dati.
+      <br />
+      <br />
+      <strong>Autore:</strong> Fiverook
+    </p>
+  </div>
+
+  <div class="post-preview" *ngIf="latestPosts.length > 0">
+    <h2>Leggi gli ultimi post!</h2>
+    <div class="recent-post" *ngFor="let post of latestPosts">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.content | slice: 0:100 }}...</p>
+      <a [routerLink]="['/post', post.id]">Leggi di più</a>
+    </div>
+  </div>
+
+  <div class="login-message" *ngIf="!isLoggedIn">
+    <h2>Effettua l'accesso</h2>
+    <p>Accedendo potrai leggere e rispondere ai post</p>
+    <a routerLink="/login">Accedi</a>
+  </div>
+</div>

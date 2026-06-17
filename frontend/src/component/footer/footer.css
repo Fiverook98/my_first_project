@@ -1,0 +1,25 @@
+.footer {
+  background-color: var(--footer-bg);   /* era #f4f4f4 */
+  color: var(--footer-text);            /* era #555 */
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);  /* era #ddd */
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--accent-color);           /* era #3498db */
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.85rem;
+    padding: 0.8rem;
+  }
+}

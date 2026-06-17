@@ -1,0 +1,73 @@
+<div class="comments-container">
+  <div class="comment-card" *ngFor="let com of getComments()">
+    <div class="comment-header">
+      <h6 class="comment-user">{{ com.username }}</h6>
+      <span class="comment-date"
+        >{{ com.created_at | date: 'dd-MM-yyyy' }}</span
+      >
+    </div>
+    <p class="comment-content">{{ com.content }}</p>
+    <div class="comment-actions">
+      <button
+        class="like-button"
+        [class.liked]="isLiked(com.id!)"
+        (click)="toggleLike(com.id!)"
+      >
+        👍 Like
+      </button>
+      <button
+        *ngIf="isAdmin"
+        class="delete-button"
+        (click)="deleteComment(com.id!)"
+      >
+        🗑 Elimina
+      </button>
+      <button class="reply-button" (click)="toggleReplyForm(com.id!)">
+        💬 Rispondi
+      </button>
+      <button class="view-replies-button" (click)="toggleRepliesList(com)">
+        Visualizza Risposte
+      </button>
+    </div>
+
+    <!-- Risposte nidificate -->
+    <div class="replies" *ngIf="com.replies && com.replies.length > 0">
+      <div class="reply-card" *ngFor="let reply of com.replies">
+        <div class="reply-header">
+          <h6 class="reply-user">{{ reply.username }}</h6>
+          <span class="reply-date"
+            >{{ reply.created_at | date: 'dd-MM-yyyy' }}</span
+          >
+        </div>
+        <p class="reply-content">{{ reply.content }}</p>
+        <div class="reply-actions">
+          <button
+            class="like-button"
+            [class.liked]="isLiked(reply.id!)"
+            (click)="toggleLike(reply.id!)"
+          >
+            👍
+          </button>
+          <button
+            *ngIf="isAdmin || (reply.user_id === getUsername())"
+            class="delete-button"
+            (click)="deleteReply(com.id!, reply.id!)"
+          >
+            🗑
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modulo per inviare una risposta -->
+    <div class="reply-form" *ngIf="isReplying(com.id!)">
+      <textarea
+        [(ngModel)]="replyContent"
+        placeholder="Scrivi una risposta..."
+      ></textarea>
+      <button class="send-reply-button" (click)="sendReply(com.id!)">
+        Invia
+      </button>
+    </div>
+  </div>
+</div>

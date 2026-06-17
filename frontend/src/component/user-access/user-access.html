@@ -1,0 +1,43 @@
+<div class="user-access-container">
+  <h2>{{ isNewUser ? 'Registrazione' : 'Accesso Utente' }}</h2>
+  <form (ngSubmit)="onSubmit()" class="user-form">
+    <label>
+      Nome utente
+      <input
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        required
+        placeholder="Inserisci il tuo username"
+      />
+    </label>
+    <label>
+      Password
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+        placeholder="Inserisci la tua password"
+      />
+      <span *ngIf="isNewUser" class="helper-text"
+        >Inserisci almeno 8 caratteri includendo almeno un numero e un carattere
+        speciale.</span
+      >
+    </label>
+    <div *ngIf="isNewUser">
+      <label>
+        Data di nascita
+        <input type="date" [(ngModel)]="birthdate" name="birthdate" required />
+      </label>
+    </div>
+    <button type="submit">{{ isNewUser ? 'Registrati' : 'Accedi' }}</button>
+    <p class="toggle-mode">
+      {{ isNewUser ? 'Hai già un account?' : 'Nuovo utente?' }}
+      <a href="#" (click)="toggleMode($event)">
+        {{ isNewUser ? 'Accedi' : 'Registrati' }}
+      </a>
+    </p>
+    <p *ngIf="loginError" class="error">{{ loginError }}</p>
+  </form>
+</div>

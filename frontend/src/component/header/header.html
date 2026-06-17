@@ -1,0 +1,23 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+
+<header class="navbar">
+  <div class="brand">
+    <img src="../../assets/logo.png" alt="logo" />
+    <a routerLink="/">Mini-Blog</a>
+  </div>
+  <nav class="nav-links">
+    <a routerLink="/" style="margin-right: 10px">Home</a>
+    <a routerLink="/tutti-i-post" style="margin-right: 10px">Post</a>
+    <a routerLink="/add-post" style="margin-right: 10px" *ngIf="logged()"
+      >Nuovo Post</a
+    >
+    <a *ngIf="!logged()" routerLink="/login" style="margin-right: 10px"
+      >Accedi</a
+    >
+    <a *ngIf="logged()" (click)="logout()" style="margin-right: 10px"
+      >Effettua il Logout</a
+    >
+  </nav>
+</header>
+ 

@@ -1,0 +1,29 @@
+<div class="user-edit-container">
+  <h2 class="form-title">Modifica Utente</h2>
+
+  <form class="user-edit-form" (ngSubmit)="submitMod()">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        placeholder="Nuovo username"
+        class="form-input"
+      /> 
+    </div>
+
+    <div class="form-group">
+      <label for="birthdate">Data di nascita:</label>
+      <input
+        id="birthdate"
+        name="birthdate"
+        type="date"
+        [(ngModel)]="birthdate"
+        class="form-input"
+      />
+    </div>
+
+    <button type="submit" class="submit-button">Salva Modifiche</button>
+  </form>
+</div>

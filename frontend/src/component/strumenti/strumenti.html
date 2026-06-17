@@ -1,0 +1,34 @@
+<div class="component-container">
+  <div class="buttons-container">
+    <button class="delete-btn" (click)="deletePost()">🗑 Elimina</button>
+    <button class="edit-btn" (click)="toggleForm()">✏️ Modifica</button>
+  </div>
+
+  <div class="form-container" *ngIf="shouldShowForm">
+    <form (ngSubmit)="updatePost()">
+      <label for="title">Titolo</label>
+      <input id="title" type="text" [(ngModel)]="title" name="title" required />
+
+      <label for="content">Contenuto</label>
+      <textarea id="content" [(ngModel)]="content" name="content" required></textarea>
+
+      <div class="tags-field">
+        <label for="tags">🏷️ Tag</label>
+        <input 
+          id="tags" 
+          type="text" 
+          [(ngModel)]="tags" 
+          name="tags" 
+          placeholder="Inserisci tag separati da virgole (es: angular, typescript, web)" 
+          class="tags-input"
+        />
+        <small class="tags-help">Separa i tag con le virgole per una migliore categorizzazione</small>
+      </div>
+
+      <label for="cover_image">Immagine di copertura</label>
+      <input id="cover_image" type="file" (change)="onFileSelected($event)" />
+
+      <button type="submit">💾 Salva modifiche</button>
+    </form>
+  </div>
+</div>

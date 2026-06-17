@@ -1,0 +1,11 @@
+<app-header></app-header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<button (click)="this.themeService.toggleTheme()" class="theme-toggle">
+  🌓 Cambia tema
+</button>
+
+<app-footer></app-footer>

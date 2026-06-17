@@ -1,0 +1,75 @@
+<div class="user-admin-container">
+  <div class="search-bar"> 
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="🔍 Cerca post per username, role"
+      (keyup.enter)="onSearch()"
+    />
+    <button class="search-btn" (click)="onSearch()">Cerca</button>
+    <button
+      class="clear-btn"
+      (click)="clearSearch()"
+      *ngIf="searchQuery.trim()"
+    >
+      Pulisci
+    </button>
+  </div>
+  <h2>Gestione Utenti</h2>
+
+  <div
+    class="no-results"
+    *ngIf="searchQuery.trim() && getFilteredUsers().length === 0"
+  >
+    <p>🔍 Nessun utente trovato per "<strong>{{searchQuery}}</strong>"</p>
+    <p>
+      Prova con parole chiave diverse o
+      <button class="link-btn" (click)="clearSearch()">
+        visualizza tutti gli utenti
+      </button>
+    </p>
+  </div>
+
+  <div
+    class="user-card"
+    *ngFor="let user of (getFilteredUsers().length > 0 || searchQuery.trim()) ? getFilteredUsers() : users"
+  >
+    <div *ngIf="user.id !== currentUser?.id">
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p>
+        <strong>Data di nascita:</strong> {{ user.birthdate | date:'dd-MM-yyyy'
+        }}
+      </p>
+      <p>
+        <strong>Ruolo:</strong>
+        <span
+          [ngClass]="{
+          'badge-admin': user.role === 'admin',
+          'badge-user': user.role === 'user'
+        }"
+        >
+          {{ user.role }}
+        </span>
+      </p>
+
+      <div class="button-group">
+        <button
+          class="btn modify-btn"
+          [routerLink]="'user-mod/' + user.id"
+          (click)="toggleMod(user.id)"
+          type="button"
+        >
+          ✏️ Modifica
+        </button>
+
+        <button class="btn delete-btn" (click)="deleteUser(user.id)">
+          🗑 Elimina
+        </button>
+      </div>
+
+      <div *ngIf="isModOpen(user.id)">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
